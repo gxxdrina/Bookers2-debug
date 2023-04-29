@@ -1,9 +1,9 @@
 class BooksController < ApplicationController
+  #before_action :authenticate_user!
 
   def show
     @book = Book.find(params[:id])
-    @user = @book.user
-    @books = Book.new
+    @book_comment = BookComment.new
   end
 
   def index
@@ -15,7 +15,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-      redirect_to book_path(@book.id), notice: "You have created book successfully."
+      redirect_to book_path(@book), notice: "You have created book successfully."
     else
       @books = Book.all
       render 'index'
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    book = Book.find(params[:id])
+    book = Book.find(params[:id]) #いらない
     book.destroy
     redirect_to books_path
   end

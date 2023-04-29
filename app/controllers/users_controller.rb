@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @book = Book.new
-    @books = Book.all
+    @books = Book.all #いらない
   end  
 
   def edit
