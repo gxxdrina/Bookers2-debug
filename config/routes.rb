@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   root :to =>"homes#top"
   get "home/about"=>"homes#about"
+  
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resource :favorites, only: [:create, :destroy]# resource(単数)だとURLにidが入らない
@@ -14,5 +15,8 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
   end
+  
+  #検索ボタンが押されたらSearchesコントローラーのsearchアクション実行
+  get "search" => "searches#search"
   
 end
