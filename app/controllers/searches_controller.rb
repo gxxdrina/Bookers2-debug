@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
     else
       @books = Book.looks(params[:search], params[:word])
     end
-      redirect_to users_path
+      redirect_to search_path
   end
   
 end
