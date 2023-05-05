@@ -1,0 +1,14 @@
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "User" %>
+    <h3>Users search for "<%= params[:search] %>"</h3>
+    <%= render 'users/index', users: @users %>
+  <% else %>
+  <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <h3>Books search for "<%= params[:search] %>"</h3>
+    <%= render 'books/index', books: @books %>
+    
+    
+    
+  <% end %>
+</table>
