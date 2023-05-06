@@ -4,12 +4,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    book = Book.find(params[:id])
   end
 
   def index
     @users = User.all
     @book = Book.new
-    @books = Book.all #いらない
   end  
 
   def edit
