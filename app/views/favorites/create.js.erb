@@ -1,4 +1,5 @@
 $('#favorite_btn<%= @book.id %>').html("<%= j(render "favorites/favorite-btn", book: @book) %>");
+<!--idがbook_〇の要素の中の、favorite-btnクラスの要素-->
 
 <!--$(".favorite-btn").html("%= escape_javascript(render partial: 'favorites/favorite-btn', locals: {book: @book}) %>");-->
 
