@@ -4,6 +4,7 @@ class CreateFavorites < ActiveRecord::Migration[6.1]
 
       t.integer :user_id
       t.integer :book_id
+      t.datetime :datetime #いらない
       
       t.timestamps null: false
     end

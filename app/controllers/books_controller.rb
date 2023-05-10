@@ -7,7 +7,24 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    #to = Time.current.at_end_of_day #現在日時を取得して1日の終わりを23:59に設定
+    #from = (to - 6.day).at_beginning_of_day #1週間分のデータ 1日の始まりの時刻を0:00に設定
+    #@books = Book.includes(:favorited_users).
+    #  sort_by {|x|
+    #    x.favorited_users.includes(:favorites).where(created_at: from...to).size
+    #  }.reverse
+    
+    #過去1週間のいいね多い順
+    to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    @books = Book.all.sort{|a,b|
+    b.favorites.where(created_at: from...to).size <=>
+    a.favorites.where(created_at: from...to).size
+    }
+    
+    #いいね多い順
+    #@books = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    
     @book = Book.new
   end
 
