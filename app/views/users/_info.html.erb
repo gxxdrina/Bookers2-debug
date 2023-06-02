@@ -1,5 +1,10 @@
 <table class='table'>
-  <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
+  <% if user.profile_image %> 
+  <tr><%= image_tag user.get_profile_image, class: "rounded-circle" , size: '100x100' %></tr>
+    <!--##画像が設定されてない場合-->
+    <% else %>
+      <%= image_tag "no-image-icon.jpg", size: "150x150" %>
+  <% end %>
   <tr>
 	  <th>name</th>
 	  <th><%= user.name %></th>
